@@ -1,17 +1,36 @@
 <?php
 
+declare(strict_types=1);
+
 return [
-    'prism_server' => [
-        // The middleware that will be applied to the Prism Server routes.
-        'middleware' => [],
-        'enabled' => env('PRISM_SERVER_ENABLED', true),
-    ],
+    /*
+    |--------------------------------------------------------------------------
+    | Default provider
+    |--------------------------------------------------------------------------
+    |
+    | This value determines the default provider to use when sending requests
+    | without having explicitly specified a provider.
+    |
+    */
+
+    'default' => env('PRISM_DEFAULT_PROVIDER', 'openai'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | API providers
+    |--------------------------------------------------------------------------
+    |
+    | Here you may configure the providers that you would like to use with
+    | Prism. You can configure as many as you like, and even add your
+    | own custom providers.
+    |
+    */
+
     'providers' => [
         'openai' => [
-            'url' => env('OPENAI_URL', 'https://api.openai.com/v1'),
-            'api_key' => env('OPENAI_API_KEY', ''),
-            'organization' => env('OPENAI_ORGANIZATION', null),
-            'project' => env('OPENAI_PROJECT', null),
+            'driver' => 'openai',
+            'api_key' => env('OPENAI_API_KEY'),
+            'organisation' => env('OPENAI_ORGANISATION'),
         ],
         'anthropic' => [
             'api_key' => env('ANTHROPIC_API_KEY', ''),
@@ -36,7 +55,8 @@ return [
             'url' => env('XAI_URL', 'https://api.x.ai/v1'),
         ],
         'gemini' => [
-            'api_key' => env('GEMINI_API_KEY', ''),
+            'driver' => 'gemini',
+            'api_key' => env('PRISM_GEMINI_API_KEY'),
             'url' => env('GEMINI_URL', 'https://generativelanguage.googleapis.com/v1beta/models'),
         ],
         'deepseek' => [
