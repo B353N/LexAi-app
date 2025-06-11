@@ -6,7 +6,15 @@ use App\Models\Chat;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Str;
+<<<<<<< HEAD
 use Prism\Prism\Prism;
+=======
+<<<<<<< HEAD
+use Prism\Prism\Prism;
+=======
+use Prism\Prism\Facades\Prism;
+>>>>>>> f9e35fbd3f2fdddd8b35aeb575db4426aebae235
+>>>>>>> 8d242d342dff375cbac73b316ed8761220d0e9c3
 use Prism\Prism\ValueObjects\Messages\UserMessage;
 use Prism\Prism\ValueObjects\Messages\AssistantMessage;
 
@@ -62,7 +70,15 @@ class ChatController extends Controller
     private function generateAiResponse(Chat $chat): void
     {
         $response = Prism::text()
+<<<<<<< HEAD
             ->using('gemini', 'gemini-2.0-flash')
+=======
+<<<<<<< HEAD
+            ->using('gemini', 'gemini-2.0-flash')
+=======
+            ->using(config('prism.default_text_model.provider'), config('prism.default_text_model.model'))
+>>>>>>> f9e35fbd3f2fdddd8b35aeb575db4426aebae235
+>>>>>>> 8d242d342dff375cbac73b316ed8761220d0e9c3
             ->withMessages($chat->messages->map(function ($message) {
                 return $message->role === 'user'
                     ? new UserMessage($message->content)

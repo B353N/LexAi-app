@@ -19,6 +19,10 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
     {
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 8d242d342dff375cbac73b316ed8761220d0e9c3
 
             'email' => [
                 'required',
@@ -27,6 +31,12 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'max:255',
                 Rule::unique('users')->ignore($user->id),
             ],
+<<<<<<< HEAD
+=======
+=======
+            'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
+>>>>>>> f9e35fbd3f2fdddd8b35aeb575db4426aebae235
+>>>>>>> 8d242d342dff375cbac73b316ed8761220d0e9c3
         ])->validateWithBag('updateProfileInformation');
 
         if ($input['email'] !== $user->email &&
