@@ -72,7 +72,7 @@ const startNewChat = () => {
                                 'bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 font-semibold': activeChat && chat.id === activeChat.id,
                                 'hover:bg-gray-200 dark:hover:bg-gray-700/50 text-gray-600 dark:text-gray-400': !activeChat || chat.id !== activeChat.id
                            }">
-                            {{ chat.title }}
+                            {{ chat.title || 'New Chat' }}
                         </Link>
                     </li>
                 </ul>
@@ -82,7 +82,7 @@ const startNewChat = () => {
             <div class="flex-1 flex flex-col rounded-r-lg">
                 <!-- Messages -->
                 <div ref="messagesContainer" class="flex-1 p-6 overflow-y-auto space-y-6">
-                     <div v-if="activeChat && activeChat.messages.length > 0">
+                     <div v-if="activeChat && activeChat.messages && activeChat.messages.length > 0">
                         <div v-for="message in activeChat.messages" :key="message.id" class="flex items-start gap-4">
                             <div class="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center"
                                  :class="message.role === 'user' ? 'bg-indigo-500 text-white' : 'bg-gray-600 text-white'">
@@ -102,8 +102,8 @@ const startNewChat = () => {
                      <div v-else class="flex items-center justify-center h-full">
                         <div class="text-center text-gray-400 dark:text-gray-500">
                             <CpuChipIcon class="mx-auto h-12 w-12" />
-                            <h3 class="mt-2 text-sm font-medium">Select a chat to start</h3>
-                            <p class="mt-1 text-sm">Or create a new chat to begin your conversation with LexAI.</p>
+                            <h3 class="mt-2 text-sm font-medium">{{ activeChat ? 'No messages yet.' : 'Select a chat to start' }}</h3>
+                            <p class="mt-1 text-sm">{{ activeChat ? 'Begin your conversation with LexAI.' : 'Or create a new chat.' }}</p>
                         </div>
                      </div>
                 </div>
