@@ -9,4 +9,8 @@
              <img class="h-8 w-8 rounded-full" src="https://ui-avatars.com/api/?name=Test+User&color=7F9CF5&background=EBF4FF" alt="User avatar">
         </button>
     </div>
+<<<<<<< HEAD
+</template> 
+=======
 </template>
+>>>>>>> f9e35fbd3f2fdddd8b35aeb575db4426aebae235

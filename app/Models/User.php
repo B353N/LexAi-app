@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -49,9 +50,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Chat::class);
     }
+<<<<<<< HEAD
+=======
 
     public function documents(): HasMany
     {
         return $this->hasMany(Document::class);
     }
+>>>>>>> f9e35fbd3f2fdddd8b35aeb575db4426aebae235
 }

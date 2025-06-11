@@ -127,4 +127,8 @@ const startNewChat = () => {
             </div>
         </div>
     </AppSidebarLayout>
+<<<<<<< HEAD
+</template> 
+=======
 </template>
+>>>>>>> f9e35fbd3f2fdddd8b35aeb575db4426aebae235

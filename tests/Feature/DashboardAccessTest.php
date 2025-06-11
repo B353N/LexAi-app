@@ -1,5 +1,10 @@
 <?php
 
+<<<<<<< HEAD
+namespace Tests\Feature;
+
+=======
+>>>>>>> f9e35fbd3f2fdddd8b35aeb575db4426aebae235
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -8,6 +13,12 @@ class DashboardAccessTest extends TestCase
 {
     use RefreshDatabase;
 
+<<<<<<< HEAD
+    /**
+     * A basic feature test example.
+     */
+    public function test_dashboard_is_accessible_for_logged_in_user(): void
+=======
     /** @test */
     public function unauthenticated_users_are_redirected_to_login()
     {
@@ -18,6 +29,7 @@ class DashboardAccessTest extends TestCase
 
     /** @test */
     public function authenticated_users_can_access_the_dashboard()
+>>>>>>> f9e35fbd3f2fdddd8b35aeb575db4426aebae235
     {
         $user = User::factory()->create();
 
@@ -25,4 +37,8 @@ class DashboardAccessTest extends TestCase
 
         $response->assertStatus(200);
     }
+<<<<<<< HEAD
+} 
+=======
 }
+>>>>>>> f9e35fbd3f2fdddd8b35aeb575db4426aebae235
