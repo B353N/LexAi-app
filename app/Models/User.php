@@ -2,15 +2,23 @@
 
 namespace App\Models;
 
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Laravel\Fortify\TwoFactorAuthenticatable;
+use Laravel\Jetstream\HasProfilePhoto;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasApiTokens;
+
+    /** @use HasFactory<\Database\Factories\UserFactory> */
+    use HasFactory;
+    use HasProfilePhoto;
+    use Notifiable;
+    use TwoFactorAuthenticatable;
 
     /**
      * The attributes that are mass assignable.
@@ -31,6 +39,17 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'two_factor_recovery_codes',
+        'two_factor_secret',
+    ];
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array<int, string>
+     */
+    protected $appends = [
+        'profile_photo_url',
     ];
 
     /**
@@ -45,20 +64,4 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-
-    public function chats(): HasMany
-    {
-        return $this->hasMany(Chat::class);
-    }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-
-    public function documents(): HasMany
-    {
-        return $this->hasMany(Document::class);
-    }
->>>>>>> f9e35fbd3f2fdddd8b35aeb575db4426aebae235
->>>>>>> 8d242d342dff375cbac73b316ed8761220d0e9c3
 }
